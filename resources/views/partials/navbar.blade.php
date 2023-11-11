@@ -12,11 +12,23 @@
                 <a class="nav-link {{ ($active === 'categories') ? 'active' : '' }}" href="/categories">Categories</a>
             </div>
         </div>
-        
-            <ul class="navbar-nav ms-auto">
+
+        <ul class="navbar-nav ms-auto">
+        @auth
+            <li class="nav-item">
+                <a class="nav-link " href="/dashboard"> <i class="bi bi-layout-text-sidebar"></i> My Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="nav-link"><i class="bi bi-box-arrow-right"></i>Logout</button>
+                </form>
+            </li>
+        @else
+            <li class="nav-item">
                 <a class="nav-link {{ ($active === 'login') ? 'active' : '' }}" href="/login"> <i class="bi bi-box-arrow-in-right"></i>Login</a>
-            </ul>
+            </li>
+        @endauth
+        </ul>
         </div>
     </nav>
-
-    

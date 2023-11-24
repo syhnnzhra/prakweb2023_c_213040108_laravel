@@ -7,7 +7,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark {{ Request::is('dashboard/posts') ? 'active' : '' }} " href="/dashboard/posts">
+                <a class="nav-link text-dark {{ Request::is('dashboard/posts*') ? 'active' : '' }} " href="/dashboard/posts">
                 <i class="bi bi-postcard"></i>
                 My Posts
                 </a>

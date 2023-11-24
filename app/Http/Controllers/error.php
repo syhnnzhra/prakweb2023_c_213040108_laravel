@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPostController extends Controller
@@ -44,21 +42,23 @@ class DashboardPostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('dashboard.posts.show', [
+            'post' => $post
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
         //
     }
@@ -67,10 +67,10 @@ class DashboardPostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
         //
     }
@@ -78,17 +78,17 @@ class DashboardPostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
         //
     }
 
     public function checkSlug(Request $request){
         $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
-        
+
         return response()->json(['slug' => $slug]);
     }
 }

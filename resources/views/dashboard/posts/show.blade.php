@@ -7,8 +7,15 @@
                 <article>
                     <h2>{{ $post->title }}</h2>
                     <a href="/dashboard/posts" class="btn btn-success mb-2"> <i class="bi bi-arrow-left"></i> Back to my posts</a>
-                    <a href="" class="btn btn-warning mb-2"> <i class="bi bi-arrow-pencil"></i> Edit</a>
-                    <a href="" class="btn btn-danger mb-2"> <i class="bi bi-arrow-trash3"></i> Delete</a>
+                    <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Edit</a>
+                    <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                        <i class="bi bi-x-circle"></i>
+                        Delete
+                        </button>
+                    </form>
                     <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="img-fluid">
 
                     <article class="my-3">

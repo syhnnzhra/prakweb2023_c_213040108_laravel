@@ -19,7 +19,7 @@
     </div>
     <div class="mb-3">
       <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" disabled readonly value="{{ old('slug') }}">
+      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"  value="{{ old('slug') }}">
       @error('slug')
       <div class="invalid-feedback">
         {{ $message }}
@@ -38,15 +38,9 @@
           @endif
         @endforeach
       </select>
-    </div>
-    <div class="mb-3">
+      <div class="mb-3">
       <label for="body" class="form-label">Category</label>
       <input id="body" type="hidden" name="body">
-      <label for="body" class="form-label">Body</label>
-      @error('body')
-          <p class="text-danger">{{ $message }}</p>
-      @enderror
-      <input id="body" type="hidden" name="body" value="{{ old('body') }}">
       <trix-editor input="body"></trix-editor>
     </div>
 

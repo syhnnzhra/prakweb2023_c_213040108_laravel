@@ -29,13 +29,13 @@
           <td>{{ $p->title }}</td>
           <td>{{ $p->category->name }}</td>
           <td>
-            <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info">
+            <a href="/dashboard/posts/{{ $p->slug }}" class="badge bg-info">
                 <i class="bi bi-eye"></i>
               </a>
-              <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning">
+              <a href="/dashboard/posts/{{ $p->slug }}/edit" class="badge bg-warning">
                 <i class="bi bi-pencil-square"></i>
               </a>
-              <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
+              <form action="/dashboard/posts/{{ $p->slug }}" method="POST" class="d-inline">
                 @csrf
                 @method('delete')
                 <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
